@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, useScroll, useTransform, type Variants } from 'framer-motion';
 import {
-  ArrowRight,
-  ArrowUpRight,
+  ArrowLeft,
+  ArrowUpLeft,
   MapPin,
   Phone,
   Mail,
@@ -20,17 +20,17 @@ import {
 import './App.css';
 
 // Animation variants
-const fadeInUp = {
+const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.4, 0, 0.2, 1] } }
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
 };
 
-const fadeIn = {
+const fadeIn: Variants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { duration: 0.8 } }
 };
 
-const staggerContainer = {
+const staggerContainer: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -54,39 +54,39 @@ function App() {
 
   const projects = [
     {
-      title: 'Azure Heights Tower',
-      category: 'Commercial',
-      location: 'Tehran, Iran',
+      title: 'برج آبی‌رنگ',
+      category: 'تجاری',
+      location: 'تهران، ایران',
       image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80'
     },
     {
-      title: 'Serenity Villa',
-      category: 'Residential',
-      location: 'Shiraz, Iran',
+      title: 'ویلای آرامش',
+      category: 'مسکونی',
+      location: 'شیراز، ایران',
       image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80'
     },
     {
-      title: 'The Cultural Pavilion',
-      category: 'Cultural',
-      location: 'Isfahan, Iran',
+      title: 'پاویون فرهنگی',
+      category: 'فرهنگی',
+      location: 'اصفهان، ایران',
       image: 'https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=800&q=80'
     },
     {
-      title: 'Horizon Office Complex',
-      category: 'Commercial',
-      location: 'Mashhad, Iran',
+      title: 'مجتمع اداری افق',
+      category: 'تجاری',
+      location: 'مشهد، ایران',
       image: 'https://images.unsplash.com/photo-1577495508048-b635879837f1?w=800&q=80'
     },
     {
-      title: 'Garden Residence',
-      category: 'Residential',
-      location: 'Tehran, Iran',
+      title: 'اقامتگاه باغ',
+      category: 'مسکونی',
+      location: 'تهران، ایران',
       image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80'
     },
     {
-      title: 'Innovation Hub',
-      category: 'Mixed Use',
-      location: 'Tabriz, Iran',
+      title: 'مرکز نوآوری',
+      category: 'چند منظوره',
+      location: 'تبریز، ایران',
       image: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=800&q=80'
     }
   ];
@@ -94,40 +94,40 @@ function App() {
   const services = [
     {
       icon: <Compass size={24} />,
-      title: 'Architectural Design',
-      description: 'Creating innovative and functional architectural solutions that blend aesthetics with purpose.'
+      title: 'طراحی معماری',
+      description: 'خلق راه‌حل‌های معماری نوآورانه و کاربردی که زیبایی‌شناسی را با هدف ترکیب می‌کنند.'
     },
     {
       icon: <PenTool size={24} />,
-      title: 'Interior Design',
-      description: 'Crafting inspiring interior spaces that reflect your lifestyle and enhance daily living.'
+      title: 'طراحی داخلی',
+      description: 'طراحی فضاهای داخلی الهام‌بخش که بازتاب‌دهنده سبک زندگی شما و ارتقا‌دهنده زندگی روزمره هستند.'
     },
     {
       icon: <Building2 size={24} />,
-      title: 'Urban Planning',
-      description: 'Developing sustainable urban solutions that shape vibrant communities for generations.'
+      title: 'برنامه‌ریزی شهری',
+      description: 'توسعه راه‌حل‌های پایدار شهری که جوامع پویا را برای نسل‌های آینده شکل می‌دهند.'
     },
     {
       icon: <Ruler size={24} />,
-      title: 'Project Management',
-      description: 'Ensuring seamless execution from concept to completion with precision and care.'
+      title: 'مدیریت پروژه',
+      description: 'تضمین اجرای بی‌نقص از مفهوم تا تکمیل با دقت و توجه.'
     }
   ];
 
   const team = [
     {
-      name: 'Sara Ahmadi',
-      role: 'Principal Architect',
+      name: 'سارا احمدی',
+      role: 'معمار اصلی',
       image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80'
     },
     {
-      name: 'Reza Mohammadi',
-      role: 'Design Director',
+      name: 'رضا محمدی',
+      role: 'مدیر طراحی',
       image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'
     },
     {
-      name: 'Mina Karimi',
-      role: 'Interior Lead',
+      name: 'مینا کریمی',
+      role: 'سرپرست داخلی',
       image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&q=80'
     }
   ];
@@ -137,23 +137,23 @@ function App() {
       {/* Navigation */}
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <a href="#" className="navbar__logo">
-          Pele<span>kan</span>
+          پل<span>کان</span>
         </a>
 
         <ul className="navbar__menu">
-          <li><a href="#about" className="navbar__link">About</a></li>
-          <li><a href="#projects" className="navbar__link">Projects</a></li>
-          <li><a href="#services" className="navbar__link">Services</a></li>
-          <li><a href="#team" className="navbar__link">Team</a></li>
-          <li><a href="#contact" className="navbar__link">Contact</a></li>
+          <li><a href="#about" className="navbar__link">درباره ما</a></li>
+          <li><a href="#projects" className="navbar__link">پروژه‌ها</a></li>
+          <li><a href="#services" className="navbar__link">خدمات</a></li>
+          <li><a href="#team" className="navbar__link">تیم</a></li>
+          <li><a href="#contact" className="navbar__link">تماس</a></li>
         </ul>
 
-        <a href="#contact" className="navbar__cta">Get in Touch</a>
+        <a href="#contact" className="navbar__cta">ارتباط با ما</a>
 
         <button 
           className="navbar__mobile-toggle"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label="Toggle menu"
+          aria-label="منو"
         >
           {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
@@ -177,10 +177,10 @@ function App() {
           }}
         >
           <ul style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            {['About', 'Projects', 'Services', 'Team', 'Contact'].map((item) => (
+            {['درباره ما', 'پروژه‌ها', 'خدمات', 'تیم', 'تماس'].map((item) => (
               <li key={item}>
                 <a 
-                  href={`#${item.toLowerCase()}`} 
+                  href={`#${item === 'درباره ما' ? 'about' : item === 'پروژه‌ها' ? 'projects' : item === 'خدمات' ? 'services' : item === 'تیم' ? 'team' : 'contact'}`} 
                   className="navbar__link"
                   onClick={() => setMobileMenuOpen(false)}
                   style={{ fontSize: '1.2rem' }}
@@ -198,7 +198,7 @@ function App() {
         <div className="hero__background">
           <img 
             src="https://images.unsplash.com/photo-1486718448742-163732cd1544?w=1920&q=80" 
-            alt="Modern Architecture"
+            alt="معماری مدرن"
           />
           <div className="hero__overlay" />
         </div>
@@ -211,51 +211,51 @@ function App() {
             variants={staggerContainer}
           >
             <motion.p className="hero__subtitle" variants={fadeInUp}>
-              Architecture & Design Studio
+              استودیو معماری و طراحی
             </motion.p>
             <motion.h1 className="hero__title" variants={fadeInUp}>
-              Crafting <span>Timeless</span> Spaces That Inspire
+              خلق فضاهای <span>بی‌زمان</span> که الهام‌بخشند
             </motion.h1>
             <motion.p className="hero__description" variants={fadeInUp}>
-              We transform visionary concepts into architectural masterpieces. 
-              Our designs seamlessly blend innovation, functionality, and enduring beauty 
-              to create spaces that elevate human experience.
+              ما مفاهیم visionary را به شاهکارهای معماری تبدیل می‌کنیم.
+              طراحی‌های ما نوآوری، عملکرد و زیبایی ماندگار را به هم می‌آمیزند
+              تا فضاهایی که تجربه انسانی را ارتقا می‌دهند، ایجاد کنند.
             </motion.p>
             <motion.div className="hero__buttons" variants={fadeInUp}>
               <a href="#projects" className="btn-primary">
-                View Our Work <ArrowRight size={18} />
+                <ArrowLeft size={18} /> مشاهده آثار
               </a>
               <a href="#about" className="btn-secondary">
-                Learn More
+                بیشتر بدانید
               </a>
             </motion.div>
 
             <motion.div className="hero__stats" variants={fadeInUp}>
               <div className="hero__stat">
-                <div className="hero__stat-number">15+</div>
-                <div className="hero__stat-label">Years Experience</div>
+                <div className="hero__stat-number">۱۵+</div>
+                <div className="hero__stat-label">سال تجربه</div>
               </div>
               <div className="hero__stat">
-                <div className="hero__stat-number">120+</div>
-                <div className="hero__stat-label">Projects Completed</div>
+                <div className="hero__stat-number">۱۲۰+</div>
+                <div className="hero__stat-label">پروژه تکمیل‌شده</div>
               </div>
               <div className="hero__stat">
-                <div className="hero__stat-number">25</div>
-                <div className="hero__stat-label">Design Awards</div>
+                <div className="hero__stat-number">۲۵</div>
+                <div className="hero__stat-label">جایزه طراحی</div>
               </div>
             </motion.div>
           </motion.div>
 
           <motion.div 
             className="hero__visual"
-            initial={{ opacity: 0, x: 50 }}
+            initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
             <div className="hero__image-container">
               <img 
                 src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80"
-                alt="Featured Project"
+                alt="پروژه ویژه"
                 className="hero__image"
               />
               <div className="hero__image-border" />
@@ -264,7 +264,7 @@ function App() {
         </div>
 
         <div className="hero__scroll">
-          <span>Scroll</span>
+          <span>اسکرول</span>
           <div className="hero__scroll-line" />
         </div>
       </motion.section>
@@ -281,7 +281,7 @@ function App() {
           <motion.div className="about__image-wrapper" variants={fadeIn}>
             <img 
               src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80"
-              alt="About Pelekan"
+              alt="درباره پلکان"
               className="about__image"
             />
             <div className="about__image-accent" />
@@ -289,22 +289,21 @@ function App() {
 
           <motion.div className="about__content" variants={staggerContainer}>
             <motion.div className="section-label" variants={fadeInUp}>
-              About Us
+              درباره ما
             </motion.div>
             <motion.h2 className="section-title" variants={fadeInUp}>
-              We Design Spaces That <span>Inspire</span> and Endure
+              ما فضاهایی طراحی می‌کنیم که <span>الهام‌بخش</span> و ماندگارند
             </motion.h2>
             <motion.p className="about__text" variants={fadeInUp}>
-              Founded in 2009, Pelekan has grown to become one of Iran's most respected 
-              architectural practices. We believe that great architecture is born from the 
-              perfect balance of creativity, technical expertise, and deep understanding 
-              of human needs.
+              تأسیس‌شده در سال ۱۳۸۸، پلکان به یکی از محترم‌ترین دفاتر معماری ایران تبدیل شده است.
+              ما معتقدیم معماری عالی از تعادل کامل خلاقیت، تخصص فنی و درک عمیق
+              نیازهای انسانی به وجود می‌آید.
             </motion.p>
             <motion.p className="about__text" variants={fadeInUp}>
-              Our multidisciplinary team combines decades of experience with fresh 
-              perspectives, ensuring every project benefits from both wisdom and innovation. 
-              From concept to completion, we guide our clients through a collaborative 
-              journey that transforms their vision into reality.
+              تیم چند رشته‌ای ما دهه‌ها تجربه را با دیدگاه‌های تازه ترکیب می‌کند،
+              تا هر پروژه از خرد و نوآوری بهره‌مند شود.
+              از مفهوم تا تکمیل، ما مشتریان را در سفری مشارکتی همراهی می‌کنیم
+              که چشم‌انداز آنها را به واقعیت تبدیل می‌کند.
             </motion.p>
 
             <motion.div className="about__features" variants={staggerContainer}>
@@ -313,8 +312,8 @@ function App() {
                   <Compass size={20} />
                 </div>
                 <div className="about__feature-text">
-                  <h4>Visionary Design</h4>
-                  <p>Pushing boundaries with creative solutions</p>
+                  <h4>طراحی visionary</h4>
+                  <p>فشار دادن مرزها با راه‌حل‌های خلاقانه</p>
                 </div>
               </motion.div>
               <motion.div className="about__feature" variants={fadeInUp}>
@@ -322,8 +321,8 @@ function App() {
                   <Building2 size={20} />
                 </div>
                 <div className="about__feature-text">
-                  <h4>Sustainable Practice</h4>
-                  <p>Building for future generations</p>
+                  <h4>عملکرد پایدار</h4>
+                  <p>ساختن برای نسل‌های آینده</p>
                 </div>
               </motion.div>
               <motion.div className="about__feature" variants={fadeInUp}>
@@ -331,8 +330,8 @@ function App() {
                   <PenTool size={20} />
                 </div>
                 <div className="about__feature-text">
-                  <h4>Detail Oriented</h4>
-                  <p>Perfection in every element</p>
+                  <h4>توجه به جزئیات</h4>
+                  <p>کمال در هر عنصر</p>
                 </div>
               </motion.div>
               <motion.div className="about__feature" variants={fadeInUp}>
@@ -340,8 +339,8 @@ function App() {
                   <Ruler size={20} />
                 </div>
                 <div className="about__feature-text">
-                  <h4>Technical Excellence</h4>
-                  <p>Precision engineering throughout</p>
+                  <h4>تخصص فنی</h4>
+                  <p>مهندسی دقیق در تمام مراحل</p>
                 </div>
               </motion.div>
             </motion.div>
@@ -360,10 +359,10 @@ function App() {
         >
           <div className="projects__header-text">
             <motion.div className="section-label" variants={fadeInUp}>
-              Our Portfolio
+              نمونه کارها
             </motion.div>
             <motion.h2 className="section-title" variants={fadeInUp}>
-              Featured <span>Projects</span>
+              پروژه‌های <span>ویژه</span>
             </motion.h2>
           </div>
           <motion.a 
@@ -371,7 +370,7 @@ function App() {
             className="btn-secondary"
             variants={fadeInUp}
           >
-            View All Projects <ArrowUpRight size={16} />
+            <ArrowUpLeft size={16} /> مشاهده همه پروژه‌ها
           </motion.a>
         </motion.div>
 
@@ -401,7 +400,7 @@ function App() {
                 <span className="project-card__location">{project.location}</span>
               </div>
               <div className="project-card__arrow">
-                <ArrowUpRight size={20} />
+                <ArrowUpLeft size={20} />
               </div>
             </motion.div>
           ))}
@@ -419,17 +418,17 @@ function App() {
             variants={staggerContainer}
           >
             <motion.div className="section-label" variants={fadeInUp}>
-              What We Offer
+              آنچه ارائه می‌دهیم
             </motion.div>
             <motion.h2 className="section-title" variants={fadeInUp}>
-              Comprehensive <span>Services</span>
+              خدمات <span>جامع</span>
             </motion.h2>
             <motion.p 
               style={{ color: 'var(--color-text-muted)', marginTop: '1rem' }}
               variants={fadeInUp}
             >
-              From initial concept to final construction, we provide end-to-end 
-              architectural services tailored to your unique vision.
+              از مفهوم اولیه تا ساخت نهایی، ما خدمات معماری end-to-end
+              متناسب با چشم‌انداز منحصر به فرد شما ارائه می‌دهیم.
             </motion.p>
           </motion.div>
 
@@ -446,7 +445,7 @@ function App() {
                 className="service-card"
                 variants={fadeInUp}
               >
-                <div className="service-card__number">0{index + 1}</div>
+                <div className="service-card__number">۰{index + 1}</div>
                 <div className="service-card__icon">{service.icon}</div>
                 <h3 className="service-card__title">{service.title}</h3>
                 <p className="service-card__description">{service.description}</p>
@@ -467,17 +466,17 @@ function App() {
             variants={staggerContainer}
           >
             <motion.div className="section-label" variants={fadeInUp}>
-              Our Team
+              تیم ما
             </motion.div>
             <motion.h2 className="section-title" variants={fadeInUp}>
-              Meet the <span>Visionaries</span>
+              آشنا شوید با <span>رویاپردازان</span>
             </motion.h2>
             <motion.p 
               style={{ color: 'var(--color-text-muted)', marginTop: '1rem' }}
               variants={fadeInUp}
             >
-              Our talented team brings together diverse expertise and shared 
-              passion for exceptional design.
+              تیم بااستعداد ما تخصص متنوع و علاقه مشترک به طراحی استثنایی
+              را گرد هم آورده است.
             </motion.p>
           </motion.div>
 
@@ -523,19 +522,19 @@ function App() {
             <Quote className="testimonials__quote-icon" />
           </motion.div>
           <motion.p className="testimonials__content" variants={fadeInUp}>
-            "Pelekan transformed our vision into a stunning reality. Their attention to 
-            detail, creative approach, and professional execution exceeded all our 
-            expectations. Working with them was an absolute pleasure from start to finish."
+            «پلکان چشم‌انداز ما را به واقعیتی خیره‌کننده تبدیل کرد. توجه به
+            جزئیات، رویکرد خلاقانه و اجرای حرفه‌ای آنها فراتر از تمام
+            انتظارات ما بود. کار با آنها از ابتدا تا انتها یک لذت مطلق بود.»
           </motion.p>
           <motion.div className="testimonials__author" variants={fadeInUp}>
             <img 
               src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80"
-              alt="Client"
+              alt="مشتری"
               className="testimonials__author-image"
             />
             <div className="testimonials__author-info">
-              <h4>Ahmad Rezaei</h4>
-              <p>CEO, Rezaei Holdings</p>
+              <h4>احمد رضایی</h4>
+              <p>مدیرعامل، گروه رضایی</p>
             </div>
           </motion.div>
         </motion.div>
@@ -552,15 +551,14 @@ function App() {
             variants={staggerContainer}
           >
             <motion.div className="section-label" variants={fadeInUp}>
-              Get in Touch
+              ارتباط با ما
             </motion.div>
             <motion.h2 variants={fadeInUp}>
-              Let's Create Something <span>Extraordinary</span>
+              بیایید چیزی <span>استثنایی</span> بسازیم
             </motion.h2>
             <motion.p className="contact__info-text" variants={fadeInUp}>
-              Ready to bring your vision to life? We'd love to hear about your 
-              project and explore how we can help create something truly remarkable 
-              together.
+              آماده‌اید چشم‌انداز خود را زنده کنید؟ دوست داریم درباره پروژه شما بشنویم
+              و بررسی کنیم چگونه می‌توانیم با هم چیزی واقعاً شگفت‌انگیز خلق کنیم.
             </motion.p>
 
             <motion.div className="contact__details" variants={staggerContainer}>
@@ -569,8 +567,8 @@ function App() {
                   <MapPin size={20} />
                 </div>
                 <div className="contact__detail-text">
-                  <h4>Visit Us</h4>
-                  <p>No. 42, Valiasr Street<br />Tehran, Iran</p>
+                  <h4>ملاقات با ما</h4>
+                  <p>خیابان ولیعصر، پلاک ۴۲<br />تهران، ایران</p>
                 </div>
               </motion.div>
               <motion.div className="contact__detail" variants={fadeInUp}>
@@ -578,8 +576,8 @@ function App() {
                   <Phone size={20} />
                 </div>
                 <div className="contact__detail-text">
-                  <h4>Call Us</h4>
-                  <p>+98 21 1234 5678</p>
+                  <h4>تماس با ما</h4>
+                  <p>۰۲۱-۱۲۳۴۵۶۷۸</p>
                 </div>
               </motion.div>
               <motion.div className="contact__detail" variants={fadeInUp}>
@@ -587,7 +585,7 @@ function App() {
                   <Mail size={20} />
                 </div>
                 <div className="contact__detail-text">
-                  <h4>Email Us</h4>
+                  <h4>ایمیل به ما</h4>
                   <p>info@pelekan.ir</p>
                 </div>
               </motion.div>
@@ -601,28 +599,28 @@ function App() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h3 className="contact__form-title">Send Us a Message</h3>
+            <h3 className="contact__form-title">ارسال پیام</h3>
             <form onSubmit={(e) => e.preventDefault()}>
               <div className="form-row">
                 <div className="form-group">
-                  <label htmlFor="name">Your Name</label>
-                  <input type="text" id="name" placeholder="John Doe" />
+                  <label htmlFor="name">نام شما</label>
+                  <input type="text" id="name" placeholder="نام و نام خانوادگی" />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="email">Email Address</label>
-                  <input type="email" id="email" placeholder="john@example.com" />
+                  <label htmlFor="email">آدرس ایمیل</label>
+                  <input type="email" id="email" placeholder="example@email.com" />
                 </div>
               </div>
               <div className="form-group">
-                <label htmlFor="subject">Subject</label>
-                <input type="text" id="subject" placeholder="Project Inquiry" />
+                <label htmlFor="subject">موضوع</label>
+                <input type="text" id="subject" placeholder="درخواست پروژه" />
               </div>
               <div className="form-group">
-                <label htmlFor="message">Message</label>
-                <textarea id="message" placeholder="Tell us about your project..."></textarea>
+                <label htmlFor="message">پیام</label>
+                <textarea id="message" placeholder="درباره پروژه خود به ما بگویید..."></textarea>
               </div>
               <button type="submit" className="contact__form-submit">
-                Send Message <Send size={18} />
+                <Send size={18} /> ارسال پیام
               </button>
             </form>
           </motion.div>
@@ -634,59 +632,59 @@ function App() {
         <div className="footer__container">
           <div className="footer__brand">
             <div className="footer__logo">
-              Pele<span>kan</span>
+              پل<span>کان</span>
             </div>
             <p className="footer__description">
-              Creating timeless architectural experiences that inspire, 
-              innovate, and endure. Where vision meets precision.
+              خلق تجربیات معماری بی‌زمان که الهام‌بخش، نوآورانه و ماندگارند.
+              جایی که چشم‌انداز با دقت ملاقات می‌کند.
             </p>
             <div className="footer__social">
-              <a href="#" className="footer__social-link" aria-label="Instagram">
+              <a href="#" className="footer__social-link" aria-label="اینستاگرام">
                 <Instagram size={18} />
               </a>
-              <a href="#" className="footer__social-link" aria-label="LinkedIn">
+              <a href="#" className="footer__social-link" aria-label="لینکدین">
                 <Linkedin size={18} />
               </a>
             </div>
           </div>
 
           <div className="footer__column">
-            <h4>Quick Links</h4>
+            <h4>دسترسی سریع</h4>
             <ul className="footer__links">
-              <li><a href="#about" className="footer__link">About Us</a></li>
-              <li><a href="#projects" className="footer__link">Projects</a></li>
-              <li><a href="#services" className="footer__link">Services</a></li>
-              <li><a href="#team" className="footer__link">Our Team</a></li>
+              <li><a href="#about" className="footer__link">درباره ما</a></li>
+              <li><a href="#projects" className="footer__link">پروژه‌ها</a></li>
+              <li><a href="#services" className="footer__link">خدمات</a></li>
+              <li><a href="#team" className="footer__link">تیم ما</a></li>
             </ul>
           </div>
 
           <div className="footer__column">
-            <h4>Services</h4>
+            <h4>خدمات</h4>
             <ul className="footer__links">
-              <li><a href="#" className="footer__link">Architecture</a></li>
-              <li><a href="#" className="footer__link">Interior Design</a></li>
-              <li><a href="#" className="footer__link">Urban Planning</a></li>
-              <li><a href="#" className="footer__link">Consultation</a></li>
+              <li><a href="#" className="footer__link">معماری</a></li>
+              <li><a href="#" className="footer__link">طراحی داخلی</a></li>
+              <li><a href="#" className="footer__link">برنامه‌ریزی شهری</a></li>
+              <li><a href="#" className="footer__link">مشاوره</a></li>
             </ul>
           </div>
 
           <div className="footer__column">
-            <h4>Contact</h4>
+            <h4>تماس</h4>
             <ul className="footer__links">
               <li><span className="footer__link">info@pelekan.ir</span></li>
-              <li><span className="footer__link">+98 21 1234 5678</span></li>
-              <li><span className="footer__link">Tehran, Iran</span></li>
+              <li><span className="footer__link">۰۲۱-۱۲۳۴۵۶۷۸</span></li>
+              <li><span className="footer__link">تهران، ایران</span></li>
             </ul>
           </div>
         </div>
 
         <div className="footer__bottom">
           <p className="footer__copyright">
-            © {new Date().getFullYear()} Pelekan Architecture Studio. All rights reserved.
+            © {new Date().getFullYear()} استودیو معماری پلکان. تمامی حقوق محفوظ است.
           </p>
           <div className="footer__legal">
-            <a href="#">Privacy Policy</a>
-            <a href="#">Terms of Service</a>
+            <a href="#">حریم خصوصی</a>
+            <a href="#">شرایط استفاده</a>
           </div>
         </div>
       </footer>
