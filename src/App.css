@@ -19,19 +19,33 @@
 }
 
 .navbar.scrolled {
-  background: rgba(10, 10, 10, 0.95);
+  background: var(--color-overlay-strong);
   backdrop-filter: blur(20px);
   padding: 1rem 4rem;
   border-bottom: 1px solid var(--color-border);
 }
 
 .navbar__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
   font-family: var(--font-display);
-  font-size: 2rem;
-  font-weight: 500;
-  letter-spacing: 0.15em;
+  font-size: 1.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   color: var(--color-text);
-  text-transform: uppercase;
+}
+
+.navbar__logo-image {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  object-fit: cover;
+  border: 1px solid var(--color-border);
+}
+
+.navbar__logo-text {
+  line-height: 1;
 }
 
 .navbar__logo span {
@@ -130,9 +144,9 @@
   inset: 0;
   background: linear-gradient(
     135deg,
-    rgba(10, 10, 10, 0.9) 0%,
-    rgba(10, 10, 10, 0.6) 50%,
-    rgba(10, 10, 10, 0.8) 100%
+    var(--color-overlay-strong) 0%,
+    var(--color-overlay-medium) 50%,
+    var(--color-overlay-strong) 100%
   );
 }
 
@@ -485,8 +499,8 @@
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(10, 10, 10, 0.95) 0%,
-    rgba(10, 10, 10, 0.3) 50%,
+    var(--color-overlay-strong) 0%,
+    var(--color-overlay-light) 50%,
     transparent 100%
   );
   display: flex;
@@ -676,7 +690,7 @@
 .team-card__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(10, 10, 10, 0.5) 0%, transparent 50%);
+  background: linear-gradient(to top, var(--color-overlay-light) 0%, transparent 50%);
 }
 
 .team-card__name {
@@ -911,12 +925,22 @@
 }
 
 .footer__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
   font-family: var(--font-display);
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: 500;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  letter-spacing: 0.08em;
   margin-bottom: 1.5rem;
+}
+
+.footer__logo-image {
+  width: 42px;
+  height: 42px;
+  border-radius: 9px;
+  border: 1px solid var(--color-border);
+  object-fit: cover;
 }
 
 .footer__logo span {
@@ -1101,6 +1125,15 @@
 }
 
 @media (max-width: 640px) {
+  .navbar__logo-image {
+    width: 42px;
+    height: 42px;
+  }
+
+  .navbar__logo-text {
+    font-size: 1.5rem;
+  }
+
   .hero__title {
     font-size: 2.5rem;
   }

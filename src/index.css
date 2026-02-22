@@ -1,12 +1,15 @@
 :root {
-  --color-bg: #0a0a0a;
-  --color-bg-secondary: #111111;
-  --color-bg-tertiary: #1a1a1a;
-  --color-text: #fafafa;
-  --color-text-muted: #8a8a8a;
-  --color-accent: #c9a66b;
-  --color-accent-hover: #d4b57d;
-  --color-border: #2a2a2a;
+  --color-bg: #0d232b;
+  --color-bg-secondary: #14333d;
+  --color-bg-tertiary: #1a3e4b;
+  --color-text: #edf5f7;
+  --color-text-muted: #9eb8c1;
+  --color-accent: #4f8598;
+  --color-accent-hover: #66a0b3;
+  --color-border: #2f5a67;
+  --color-overlay-strong: rgba(10, 30, 36, 0.97);
+  --color-overlay-medium: rgba(10, 30, 36, 0.82);
+  --color-overlay-light: rgba(10, 30, 36, 0.42);
   --font-display: 'Vazirmatn', sans-serif;
   --font-body: 'Vazirmatn', sans-serif;
   --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
@@ -24,7 +27,7 @@ html {
 
 body {
   font-family: var(--font-body);
-  background-color: var(--color-bg);
+  background: radial-gradient(circle at 10% 5%, #1c4958 0%, var(--color-bg) 45%);
   color: var(--color-text);
   line-height: 1.6;
   overflow-x: hidden;
@@ -61,7 +64,7 @@ button {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-bg);
+  background: var(--color-bg-secondary);
 }
 
 ::-webkit-scrollbar-thumb {

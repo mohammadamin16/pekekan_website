@@ -137,7 +137,10 @@ function App() {
       {/* Navigation */}
       <nav className={`navbar ${scrolled ? 'scrolled' : ''}`}>
         <a href="#" className="navbar__logo">
-          پل<span>کان</span>
+          <img src="/logo.png" alt="لوگوی پلکان" className="navbar__logo-image" />
+          <span className="navbar__logo-text">
+            پل<span>کان</span>
+          </span>
         </a>
 
         <ul className="navbar__menu">
@@ -170,7 +173,7 @@ function App() {
             top: '70px',
             left: 0,
             right: 0,
-            background: 'rgba(10, 10, 10, 0.98)',
+            background: 'var(--color-overlay-strong)',
             padding: '2rem',
             zIndex: 999,
             borderBottom: '1px solid var(--color-border)'
@@ -632,7 +635,10 @@ function App() {
         <div className="footer__container">
           <div className="footer__brand">
             <div className="footer__logo">
-              پل<span>کان</span>
+              <img src="/logo.png" alt="لوگوی پلکان" className="footer__logo-image" />
+              <span>
+                پل<span>کان</span>
+              </span>
             </div>
             <p className="footer__description">
               خلق تجربیات معماری بی‌زمان که الهام‌بخش، نوآورانه و ماندگارند.
