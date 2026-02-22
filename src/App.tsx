@@ -57,37 +57,37 @@ function App() {
       title: 'برج آبی‌رنگ',
       category: 'تجاری',
       location: 'تهران، ایران',
-      image: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80'
+      image: '/images/project-blue-tower.jpg'
     },
     {
       title: 'ویلای آرامش',
       category: 'مسکونی',
       location: 'شیراز، ایران',
-      image: 'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80'
+      image: '/images/project-villa.jpg'
     },
     {
       title: 'پاویون فرهنگی',
       category: 'فرهنگی',
       location: 'اصفهان، ایران',
-      image: 'https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=800&q=80'
+      image: '/images/project-cultural.jpg'
     },
     {
       title: 'مجتمع اداری افق',
       category: 'تجاری',
       location: 'مشهد، ایران',
-      image: 'https://images.unsplash.com/photo-1577495508048-b635879837f1?w=800&q=80'
+      image: '/images/project-office.jpg'
     },
     {
       title: 'اقامتگاه باغ',
       category: 'مسکونی',
       location: 'تهران، ایران',
-      image: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80'
+      image: '/images/project-garden.jpg'
     },
     {
       title: 'مرکز نوآوری',
       category: 'چند منظوره',
       location: 'تبریز، ایران',
-      image: 'https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=800&q=80'
+      image: '/images/project-innovation.jpg'
     }
   ];
 
@@ -118,17 +118,17 @@ function App() {
     {
       name: 'سارا احمدی',
       role: 'معمار اصلی',
-      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80'
+      image: '/images/team-sara.jpg'
     },
     {
       name: 'رضا محمدی',
       role: 'مدیر طراحی',
-      image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80'
+      image: '/images/team-reza.jpg'
     },
     {
       name: 'مینا کریمی',
       role: 'سرپرست داخلی',
-      image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&q=80'
+      image: '/images/team-mina.jpg'
     }
   ];
 
@@ -197,7 +197,7 @@ function App() {
       <motion.section className="hero" style={{ opacity: heroOpacity }}>
         <div className="hero__background">
           <img 
-            src="https://images.unsplash.com/photo-1486718448742-163732cd1544?w=1920&q=80" 
+            src="/images/hero-bg.jpg" 
             alt="معماری مدرن"
           />
           <div className="hero__overlay" />
@@ -254,7 +254,7 @@ function App() {
           >
             <div className="hero__image-container">
               <img 
-                src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80"
+                src="/images/hero-featured.jpg"
                 alt="پروژه ویژه"
                 className="hero__image"
               />
@@ -280,7 +280,7 @@ function App() {
         >
           <motion.div className="about__image-wrapper" variants={fadeIn}>
             <img 
-              src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80"
+              src="/images/about.jpg"
               alt="درباره پلکان"
               className="about__image"
             />
@@ -528,7 +528,7 @@ function App() {
           </motion.p>
           <motion.div className="testimonials__author" variants={fadeInUp}>
             <img 
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80"
+              src="/images/testimonial-author.jpg"
               alt="مشتری"
               className="testimonials__author-image"
             />
